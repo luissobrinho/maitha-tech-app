@@ -1,0 +1,12 @@
+:host {
+  mat-tab-group {
+    height: 100vh;
+    ::ng-deep .mat-mdc-tab-header {
+      display: none;
+    }
+    mat-tab-header {
+      height: 0;
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 35px);
+
+  .card-login {
+    width: 500px;
+
+    .card-header {
+      text-align: center;
+      ::ng-deep .mat-mdc-card-header-text {
+        width: 100%;
+      }
+
+      .card-title{
+        opacity: .6;
+        font-weight: normal;
+        line-height: 1.2;
+        font-size: 21pt;
+      }
+
+      .card-subtitle {
+        font-size: 1.188rem;
+        font-weight: normal;
+      }
+    }
+
+    .content-login {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .card-actions {
+    display: flex;
+    justify-content: space-evenly;
+
+    .full {
+      width: 150px;
+    }
+  }
+
+}

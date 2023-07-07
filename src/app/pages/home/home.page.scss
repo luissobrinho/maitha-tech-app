@@ -1,0 +1,51 @@
+.icon {
+  padding: 0 14px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px 25px;
+
+  .card-register {
+    &__card-header {
+      margin-bottom: 25px;
+
+      &__card-title {
+        opacity: .6;
+        font-weight: normal;
+        line-height: 1.2;
+        font-size: 21pt;
+      }
+
+      &__card-subtitle {
+        font-size: 1.188rem;
+        font-weight: normal;
+      }
+    }
+
+    &__content-register {
+      display: flex;
+      flex-direction: column;
+
+      &__form-field-full {
+        width: 100%;
+      }
+    }
+
+    &__card-actions {
+      display: flex;
+      justify-content: space-evenly;
+
+      &__full {
+        width: 150px;
+      }
+    }
+  }
+}

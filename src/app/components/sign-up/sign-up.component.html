@@ -1,0 +1,57 @@
+<mat-card-content class="container">
+  <mat-card class="card-register">
+    <mat-card-header class="card-register__card-header">
+      <mat-card-title class="card-register__card-header__card-title">Cadastro</mat-card-title>
+      <mat-card-subtitle class="card-register__card-header__card-subtitle">Faça login na sua conta abaixo.</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="card-register__content-register">
+      <form [formGroup]="form">
+        <mat-form-field appearance="outline" class="card-register__content-register__form-field-full">
+          <mat-label>Nome</mat-label>
+          <input type="email" matInput formControlName="name" placeholder="Ex. Perukas">
+          <mat-error *ngIf="form.get('name')?.hasError('email') && form.get('name')?.touched">
+            Por favor informe um email válido
+          </mat-error>
+          <mat-error *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">
+            Email é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="card-register__content-register__form-field-full">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="email" placeholder="Ex. perukas@example.com">
+          <mat-error *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched">
+            Por favor informe um email válido
+          </mat-error>
+          <mat-error *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">
+            Email é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="card-register__content-register__form-field-full">
+          <mat-label>Senha</mat-label>
+          <input type="password" matInput formControlName="password">
+          <mat-error *ngIf="form.get('password')?.invalid && form.get('password')?.touched">Senha é
+            <strong>obrigatória</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="card-register__content-register__form-field-full">
+          <mat-label>Confirmação Senha</mat-label>
+          <input type="password" matInput formControlName="password_confirm">
+          <mat-error *ngIf="form.get('password_confirm')?.invalid && (form.get('password_confirm')?.touched && !form.get('password_confirm')?.getError('passwordMismatch'))">Senha é
+            <strong>obrigatória</strong>
+          </mat-error>
+          <mat-error *ngIf="form.get('password_confirm')?.invalid && (form.get('password_confirm')?.getError('passwordMismatch'))">
+            A confirmação de senha deve ser igual à senha digitada anteriormente.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-card-actions class="card-register__content-register__card-actions">
+          <button align="start" mat-button (click)="signIn()">Sem conta? Inscreva-se agora</button>
+          <button align="end" mat-raised-button extended color="primary" class="card-register__content-register__card-actions__full" (click)="register()">Cadastrar</button>
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</mat-card-content>

@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 35px);
+
+  .card-register {
+    width: 500px;
+
+    &__card-header {
+      margin-bottom: 25px;
+      &__card-title{
+        opacity: .6;
+        font-weight: normal;
+        line-height: 1.2;
+        font-size: 21pt;
+      }
+
+      &__card-subtitle {
+        font-size: 1.188rem;
+        font-weight: normal;
+      }
+    }
+
+    &__content-register {
+      display: flex;
+      flex-direction: column;
+
+      &__form-field-full {
+        width: 100%;
+      }
+
+      &__card-actions {
+        display: flex;
+        justify-content: space-evenly;
+
+        &__full {
+          width: 150px;
+        }
+      }
+
+    }
+  }
+}

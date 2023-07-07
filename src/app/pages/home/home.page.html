@@ -1,0 +1,95 @@
+<mat-toolbar>
+  <span>Gerenciador de Usuários Plus</span>
+  <span class="spacer"></span>
+  <button (click)="logoff()" mat-icon-button>
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container">
+  <div class="card-container">
+    <mat-card class="card-register">
+      <mat-card-header class="card-register__card-header">
+        <mat-card-title class="card-register__card-header__card-title">Cadastro</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="card-register__content-register">
+        <form [formGroup]="form">
+          <mat-form-field appearance="outline" class="card-register__content-register__form-field-full">
+            <mat-label>Nome</mat-label>
+            <input type="email" matInput formControlName="name" placeholder="Ex. Perukas">
+            <mat-error *ngIf="form.get('name')?.hasError('email') && form.get('name')?.touched">
+              Por favor informe um email válido
+            </mat-error>
+            <mat-error *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">
+              Email é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="card-register__content-register__form-field-full">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email" placeholder="Ex. perukas@example.com">
+            <mat-error *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched">
+              Por favor informe um email válido
+            </mat-error>
+            <mat-error *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">
+              Email é <strong>obrigatório</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="card-register__content-register__form-field-full">
+            <mat-label>Senha</mat-label>
+            <input type="password" matInput formControlName="password">
+            <mat-error *ngIf="form.get('password')?.invalid && form.get('password')?.touched">Senha é
+              <strong>obrigatória</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-card-actions class="card-register__content-register__card-actions" align="end">
+            <button mat-raised-button extended color="primary" class="card-register__content-register__card-actions__full" (click)="register()">Cadastrar</button>
+          </mat-card-actions>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="card-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Lista</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-table [dataSource]="dataSource">
+
+          <!-- Coluna de Nome -->
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+            <mat-cell *matCellDef="let user"> {{ user.name }} </mat-cell>
+          </ng-container>
+
+          <!-- Coluna de E-mail -->
+          <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef> E-mail </mat-header-cell>
+            <mat-cell *matCellDef="let user"> {{ user.email }} </mat-cell>
+          </ng-container>
+
+          <!-- Coluna de Ações -->
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
+            <mat-cell *matCellDef="let user">
+              <button mat-icon-button color="primary" (click)="editUser(user)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="deleteUser(user)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let user; columns: displayedColumns;"></mat-row>
+
+        </mat-table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+

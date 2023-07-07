@@ -1,7 +1,20 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+import {authenticatedGuard} from "./guards/authenticated/authenticated.guard";
+import {unauthenticatedGuard} from "./guards/unauthenticated/unauthenticated.guard";
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule),
+    canActivate: [authenticatedGuard]
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule),
+    canActivate: [unauthenticatedGuard]
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
