@@ -2,7 +2,7 @@
   <mat-card class="card-register">
     <mat-card-header class="card-register__card-header">
       <mat-card-title class="card-register__card-header__card-title">Cadastro</mat-card-title>
-      <mat-card-subtitle class="card-register__card-header__card-subtitle">Faça login na sua conta abaixo.</mat-card-subtitle>
+      <mat-card-subtitle class="card-register__card-header__card-subtitle">Leva apenas alguns segundos para criar sua conta</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content class="card-register__content-register">
       <form [formGroup]="form">
@@ -48,7 +48,7 @@
         </mat-form-field>
 
         <mat-card-actions class="card-register__content-register__card-actions">
-          <button align="start" mat-button (click)="signIn()">Sem conta? Inscreva-se agora</button>
+          <button align="start" mat-button (click)="signIn()">já tem uma conta? Faça login</button>
           <button align="end" mat-raised-button extended color="primary" class="card-register__content-register__card-actions__full" (click)="register()">Cadastrar</button>
         </mat-card-actions>
       </form>
